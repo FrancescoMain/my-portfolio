@@ -7,6 +7,15 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController :: class, 'home']);
 
+Route::middleware(['auth', 'verified'])
+    ->name('private.')
+    ->prefix('private')
+    ->group(function() {
+
+        Route::get('/', [MainController :: class, 'privateHome']);
+
+    });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

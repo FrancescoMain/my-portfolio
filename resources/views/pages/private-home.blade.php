@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <h1>content</h1>
+<h1>PRIVATE content</h1>
     
 @endsection
