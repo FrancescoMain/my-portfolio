@@ -12,7 +12,7 @@
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 
-    @yieald ('head')
+    @yield ('head')
 </head>
 <body>
     @include('components.header')
