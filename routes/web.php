@@ -19,8 +19,13 @@ Route::middleware(['auth', 'verified'])
 
         Route ::get ('project/create', [MainController :: class, 'create'])
             ->name('project.create');
-        Route ::post ('project/store', [MainController :: class, 'store'])
+        Route ::post ('project/create', [MainController :: class, 'store'])
             ->name('project.store');
+
+        Route :: get('project/edit/{project}', [MainController :: class, 'edit'])
+            ->name('project.edit');
+        Route ::post('project/edit/{project}', [MainController :: class, 'update'])
+            ->name('project.update');
 
         Route :: get('/project/delete{project}' , [MainController :: class, 'delete'])
             ->name('project.delete');

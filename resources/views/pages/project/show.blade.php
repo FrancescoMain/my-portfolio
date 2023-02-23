@@ -10,6 +10,7 @@
     @auth
         
     <a href="{{route('admin.project.delete', $project)}}">DELETE</a>
+    <a href="{{route('admin.project.edit', $project)}}">EDIT</a>
     @endauth
 
 

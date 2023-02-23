@@ -7,6 +7,9 @@ use App\Models\Project;
 
 class MainController extends Controller
 {
+
+
+    
     public function home() {
         $projects = Project :: all();
 
@@ -45,6 +48,29 @@ class MainController extends Controller
 
         return redirect('/');
          
+    }
+
+
+
+    public function edit(Project $project) {
+
+        return view("pages.project.edit" , compact('project'));
+
+
+    }
+
+    public function update (Request $request, Project $project) {
+        $data = $request -> validate([
+            'name' => 'required|string|max:64|min:3|unique:projects,name,' . $project -> id,
+            'description' => 'nullable|string',
+            'image' => 'required|string|unique:projects,image,'. $project -> id,
+            'relase_date' => 'required|date|before:today',
+
+        ]);
+        $project -> update($data);
+        $project -> save();
+
+        return redirect() -> route('project.show' , $project);
     }
 
     public function privateHome(){
