@@ -7,6 +7,11 @@
     <div>{{$project -> description}}</div>
     <div>{{$project -> relase_date}}</div>
 
+    @auth
+        
+    <a href="{{route('admin.project.delete', $project)}}">DELETE</a>
+    @endauth
+
 
     
 @endsection

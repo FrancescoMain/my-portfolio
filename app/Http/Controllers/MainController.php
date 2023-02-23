@@ -39,6 +39,14 @@ class MainController extends Controller
         
     }
 
+    public function delete(Project $project) {
+
+        $project -> delete();
+
+        return redirect('/');
+         
+    }
+
     public function privateHome(){
         return view('pages.private-home');
     }
