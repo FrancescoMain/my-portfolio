@@ -16,6 +16,10 @@ Route::middleware(['auth', 'verified'])
     ->group(function() {
 
         Route::get('/', [MainController :: class, 'privateHome']);
+        Route ::get ('project/create', [MainController :: class, 'create'])
+            ->name('project.create');
+        Route ::post ('project/store', [MainController :: class, 'store'])
+            ->name('project.store');
 
     });
 

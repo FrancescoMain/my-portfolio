@@ -18,6 +18,27 @@ class MainController extends Controller
         return view('pages.project.show' , compact('project'));
     }
 
+    public function create() {
+
+        return view('pages.project.create');
+
+    }
+
+    public function store(Request $request ) {
+        $data = $request -> validate([
+            'name' => 'required|string|max:64|min:3|unique:projects',
+            'description' => 'nullable|string',
+            'image' => 'required|string|unique:projects',
+            'relase_date' => 'required|date|before:today',
+
+        ]);
+
+        $project = Project :: create($data);
+
+        return redirect() -> route('project.show' ,$project);
+        
+    }
+
     public function privateHome(){
         return view('pages.private-home');
     }

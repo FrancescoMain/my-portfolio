@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <a href="{{route('admin.project.create')}}">CREATE NEW PROJECT</a>
+
     <h1>Project</h1>
     @foreach ($projects as $project)
         <li>
