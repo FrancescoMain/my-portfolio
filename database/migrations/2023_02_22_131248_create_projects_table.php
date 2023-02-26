@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table -> string('name' , 64) -> unique();
             $table -> text('description') -> nullable();
-            $table -> string('image') -> unique();
+            $table -> string('image') -> default('no-img.png');
             $table -> date('relase_date');
 
             $table -> timestamps();

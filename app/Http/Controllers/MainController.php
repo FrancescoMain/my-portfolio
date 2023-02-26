@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Project;
 
 class MainController extends Controller
@@ -31,10 +33,13 @@ class MainController extends Controller
         $data = $request -> validate([
             'name' => 'required|string|max:64|min:3|unique:projects',
             'description' => 'nullable|string',
-            'image' => 'required|string|unique:projects',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'relase_date' => 'required|date|before:today',
 
         ]);
+
+        $img_path = Storage::put('uploads', $data['image']);
+        $data['image'] = $img_path;
 
         $project = Project :: create($data);
 
@@ -63,10 +68,13 @@ class MainController extends Controller
         $data = $request -> validate([
             'name' => 'required|string|max:64|min:3|unique:projects,name,' . $project -> id,
             'description' => 'nullable|string',
-            'image' => 'required|string|unique:projects,image,'. $project -> id,
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'relase_date' => 'required|date|before:today',
 
         ]);
+
+        $img_path = Storage::put('uploads', $data['image']);
+        $data['image'] = $img_path;
         $project -> update($data);
         $project -> save();
 

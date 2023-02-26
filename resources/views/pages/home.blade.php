@@ -14,7 +14,7 @@
                 <h2>
                     {{$project -> name}}
                 </h2>
-                <img src="{{$project -> image}}" alt="">
+                <img src="{{asset('storage/' . $project -> image)}}" alt="">
                 <div>{{$project -> relase_date}}</div>
             </a>
 

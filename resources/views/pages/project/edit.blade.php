@@ -5,7 +5,7 @@
 
     <h1>New Content</h1>
 
-    <form method="POST" action="{{route('admin.project.update' , $project)}}">
+    <form method="POST" action="{{route('admin.project.update' , $project)}}" enctype="multipart/form-data">
         @csrf    
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">image</label>
-            <input type="text" class="form-control" id="image" name="image" value="{{$project -> image}}">
+            <input type="file" class="form-control" id="image" name="image" value="{{$project -> image}}">
         </div>
         <div class="mb-3">
             <label for="relase_date" class="form-label">relase date</label>
